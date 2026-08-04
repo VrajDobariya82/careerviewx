@@ -71,7 +71,7 @@ const Hero = () => {
               <div className="absolute bottom-8 left-8 right-8 bg-[#1e1e1e]/90 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-2xl flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                    <span className="material-symbols-outlined text-3xl">psychology</span>
+                    <span className="material-symbols-outlined text-3xl">rocket_launch</span>
                   </div>
                   <div>
                     <p className="text-sm font-bold text-white">AI Career Match</p>

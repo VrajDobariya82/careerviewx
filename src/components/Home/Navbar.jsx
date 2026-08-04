@@ -5,7 +5,7 @@ const Navbar = () => {
     <header className="flex items-center justify-between whitespace-nowrap border-b border-[#2a2a2a] px-6 md:px-10 py-4 bg-charcoal/80 backdrop-blur-md sticky top-0 z-50">
       <div className="flex items-center gap-3 text-primary">
         <div className="size-9 flex items-center justify-center bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl text-white shadow-lg shadow-purple-500/30">
-          <span className="text-lg font-bold">PF</span>
+          <span className="material-symbols-outlined">rocket_launch</span>
         </div>
         <h2 className="text-white text-lg md:text-xl font-extrabold leading-tight tracking-tight">
           CareerViewX
