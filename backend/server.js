@@ -45,16 +45,15 @@ app.get("/", (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-connectDB()
-  .then(() => {
-    app.listen(PORT, "0.0.0.0", () =>
-      console.log(`Server running on port ${PORT}`)
-    );
-  })
-  .catch((error) => {
-    console.error("Failed to start server due to database connection error:", error.message);
-    process.exit(1);
-  });
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+connectDB().catch((error) => {
+  console.warn("⚠️ Database connection pending or blocked:", error.message);
+  console.warn("👉 Tip: Add your current IP (or 0.0.0.0/0) to Network Access in MongoDB Atlas: https://cloud.mongodb.com");
+});
 
 // Export for Vercel Serverless
 module.exports = app;
