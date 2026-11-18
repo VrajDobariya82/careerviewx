@@ -1,7 +1,7 @@
 const https = require("https");
 
 const OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = "mistralai/mixtral-8x7b-instruct";
+const MODEL = process.env.OPENROUTER_MODEL || "openrouter/free";
 
 const SYSTEM_PROMPT = `You are an expert career counselor AI with deep knowledge of Indian education streams and global career paths. Your job is to understand a student's interests, strengths, personality, and work style through smart questions and give them genuinely useful, personalized career guidance. Always respond in pure valid JSON only — no markdown, no backticks, no explanation before or after the JSON.`;
 
@@ -22,7 +22,7 @@ async function callOpenRouter(messages, retries = 1, temperature = 0.7) {
       ...messages,
     ],
     temperature: temperature,
-    max_tokens: 4000,
+    max_tokens: 8000,
   });
 
   const options = {
@@ -96,8 +96,8 @@ function makeRequest(url, options, body) {
     });
 
     req.on("error", reject);
-    req.setTimeout(30000, () => {
-      req.destroy(new Error("Request timed out after 30 seconds"));
+    req.setTimeout(60000, () => {
+      req.destroy(new Error("Request timed out after 60 seconds"));
     });
     req.write(body);
     req.end();
