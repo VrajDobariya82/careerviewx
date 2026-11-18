@@ -77,8 +77,10 @@ export default function AllCareers() {
   const navItems = [
     { path: "/dashboard",    label: "Dashboard",    icon: "dashboard" },
     { path: "/career-paths", label: "Career Paths", icon: "explore" },
+    { path: "/all-careers",  label: "All Careers",  icon: "travel_explore" },
     { path: "/assessments",  label: "Assessments",  icon: "quiz" },
     { path: "/mentors",      label: "Mentors",       icon: "groups" },
+    { path: "/profile",      label: "Profile",       icon: "person" },
     { path: "/settings",     label: "Settings",      icon: "settings" },
   ];
 
@@ -90,7 +92,11 @@ export default function AllCareers() {
         <div className="p-6 flex flex-col h-full justify-between">
           <div className="flex flex-col gap-8">
             {/* Logo */}
-            <div className={`flex items-center gap-3 ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}>
+            <div
+              onClick={() => navigate("/dashboard")}
+              className={`flex items-center gap-3 cursor-pointer select-none transition-transform hover:scale-[1.02] ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}
+              title="CareerviewX Dashboard"
+            >
               <img src="/logo.png" alt="CareerviewX Logo" className="size-9 rounded-xl shadow-lg shadow-purple-500/30" />
               <h2 className={`text-xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-charcoal"}`}>CareerviewX</h2>
             </div>
@@ -311,7 +317,10 @@ export default function AllCareers() {
           <aside className={`absolute right-0 top-0 h-full w-72 shadow-2xl animate-in slide-in-from-right duration-300 flex flex-col ${isDarkMode ? "bg-[#140f26] border-l border-[#2d264a]" : "bg-sidebar-light border-l border-border-light"}`}>
             <div className="p-6 flex flex-col h-full">
               <div className="flex items-center justify-between mb-8">
-                <div className={`flex items-center gap-3 ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}>
+                <div
+                  onClick={() => { navigate("/dashboard"); setMenuOpen(false); }}
+                  className={`flex items-center gap-3 cursor-pointer select-none ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}
+                >
                   <img src="/logo.png" alt="CareerviewX Logo" className="size-8 rounded-lg" />
                   <h2 className={`text-lg font-bold ${isDarkMode ? "text-white" : "text-charcoal"}`}>CareerviewX</h2>
                 </div>

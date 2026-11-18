@@ -82,26 +82,43 @@ router.get("/detail/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// GET /api/careers/:careerName - Fetch career by name (case insensitive) — existing endpoint
+// GET /api/careers/:careerName - Fetch career by name (case insensitive & partial match fallback)
 router.get("/:careerName", authMiddleware, async (req, res) => {
   try {
-    const { careerName } = req.params;
+    const rawName = (req.params.careerName || "").trim();
+    const cleanName = decodeURIComponent(rawName).trim();
 
-    // Find career by name (case insensitive)
-    const career = await Career.findOne({
-      careerName: careerName.toLowerCase().trim()
-    });
-
-    if (!career) {
-      return res.status(404).json({
-        success: false,
-        message: `Career '${careerName}' not found`
-      });
+    if (!cleanName) {
+      return res.status(200).json({ success: true, career: null });
     }
 
+    // 1. Exact case-insensitive match on careerName or title
+    let career = await Career.findOne({
+      $or: [
+        { careerName: cleanName.toLowerCase() },
+        { title: new RegExp(`^${cleanName}$`, "i") }
+      ]
+    });
+
+    // 2. Fallback: partial match on base career title (e.g. "Product Manager (Tech)" -> "Product Manager")
+    if (!career) {
+      const sanitized = cleanName.replace(/[^\w\s]/g, " ").trim();
+      const firstTwoWords = sanitized.split(/\s+/).slice(0, 2).join(" ");
+      if (firstTwoWords.length >= 3) {
+        career = await Career.findOne({
+          $or: [
+            { careerName: new RegExp(firstTwoWords, "i") },
+            { title: new RegExp(firstTwoWords, "i") },
+            { category: new RegExp(firstTwoWords, "i") }
+          ]
+        });
+      }
+    }
+
+    // 3. Return 200 with career (or null if not found) to prevent 404 network errors in client
     res.status(200).json({
       success: true,
-      career: career
+      career: career || null
     });
   } catch (error) {
     res.status(500).json({

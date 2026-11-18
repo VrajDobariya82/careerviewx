@@ -585,7 +585,7 @@ const CareerPaths = () => {
 
   return (
     <div
-      className={`min-h-screen font-display flex flex-col transition-colors duration-300 ${
+      className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
         isDarkMode
           ? "bg-background-dark text-white"
           : "bg-surface-light text-charcoal"
@@ -593,7 +593,8 @@ const CareerPaths = () => {
     >
       <InternalNavbar />
 
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+        <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Page Header */}
         <div className="mb-10">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
@@ -884,6 +885,9 @@ const CareerPaths = () => {
         )}
       </main>
 
+        <Footer />
+      </div>
+
       {/* Detail Popup */}
       {selectedCareer && (
         <DetailPopup
@@ -896,8 +900,6 @@ const CareerPaths = () => {
           navigate={navigate}
         />
       )}
-
-      <Footer />
 
       {/* Inline Animations */}
       <style>{`

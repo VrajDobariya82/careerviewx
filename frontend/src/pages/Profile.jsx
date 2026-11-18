@@ -73,23 +73,24 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <div className={`min-h-screen font-display transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+      <div className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 h-screen">
+        <div className="flex-1 min-w-0 flex flex-col items-center justify-center py-12 px-4 h-screen">
           <div className="flex flex-col items-center gap-4">
             <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-            <p className="text-white text-lg">Loading your profile...</p>
+            <p className={isDarkMode ? "text-white text-lg" : "text-charcoal text-lg"}>Loading your profile...</p>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen font-display transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+    <div className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
       <InternalNavbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+        <main className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-1">
         {error && (
           <div className={`mb-4 p-4 rounded-lg ${isDarkMode ? "bg-red-500/10 border border-red-500/50" : "bg-red-50 border border-red-200"}`}>
             <p className="text-red-400 text-sm">{error}</p>
@@ -361,7 +362,8 @@ const Profile = () => {
         </div>
       </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

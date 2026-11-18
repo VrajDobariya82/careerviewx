@@ -19,7 +19,7 @@ const FALLBACK_CAREER_NEWS = {
       title: "Placement Prep: Ace Your Campus Interviews",
       description: "Tips from recruiters and past placement toppers on how to prepare for aptitude tests, GD, and technical interviews.",
       url: "https://www.linkedin.com/pulse/placement-prep-ace-your-campus-interviews",
-      urlToImage: "https://images.unsplash.com/photo-1523240795612-9a05468c4e9e?w=800&q=80",
+      urlToImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
     },
     {
       title: "Career Pivots: Switching Industries Successfully",

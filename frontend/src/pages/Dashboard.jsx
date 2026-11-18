@@ -167,7 +167,11 @@ export default function CareerGuidanceDashboard() {
         <div className="p-6 flex flex-col h-full justify-between">
           <div className="flex flex-col gap-8">
             {/* Logo */}
-            <div className={`flex items-center gap-3 ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}>
+            <div
+              onClick={() => navigate("/dashboard")}
+              className={`flex items-center gap-3 cursor-pointer select-none transition-transform hover:scale-[1.02] ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}
+              title="CareerviewX Dashboard"
+            >
               <img src="/logo.png" alt="CareerviewX Logo" className="size-9 rounded-xl shadow-lg shadow-purple-500/30" />
               <h2 className={`text-xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-charcoal"}`}>
                 CareerviewX
@@ -224,6 +228,20 @@ export default function CareerGuidanceDashboard() {
               >
                 <span className="material-symbols-outlined">explore</span>
                 <p className="text-sm font-medium">Career Paths</p>
+              </button>
+
+              <button
+                onClick={() => navigate('/all-careers')}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-all ${isActive('/all-careers')
+                  ? isDarkMode
+                    ? 'bg-white/5 text-white'
+                    : 'bg-slate-100 text-charcoal'
+                  : isDarkMode
+                    ? 'text-[#a094b8] hover:text-white hover:bg-white/5'
+                    : 'text-gray-600 hover:text-charcoal hover:bg-slate-100'}`}
+              >
+                <span className="material-symbols-outlined">travel_explore</span>
+                <p className="text-sm font-medium">All Careers</p>
               </button>
 
               <button
@@ -611,7 +629,10 @@ export default function CareerGuidanceDashboard() {
             <div className="p-6 flex flex-col h-full">
               <div className="flex items-center justify-between mb-8">
                 {/* Logo */}
-                <div className={`flex items-center gap-3 ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}>
+                <div
+                  onClick={() => { navigate("/dashboard"); setMenuOpen(false); }}
+                  className={`flex items-center gap-3 cursor-pointer select-none ${isDarkMode ? "text-[#8b5cf6]" : "text-primary"}`}
+                >
                   <img src="/logo.png" alt="CareerviewX Logo" className="size-8 rounded-lg shadow-lg shadow-purple-500/30" />
                   <h2 className={`text-lg font-bold tracking-tight ${isDarkMode ? "text-white" : "text-charcoal"}`}>
                     CareerviewX
@@ -630,8 +651,10 @@ export default function CareerGuidanceDashboard() {
                 {[
                   { path: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
                   { path: '/career-paths', label: 'Career Paths', icon: 'explore' },
+                  { path: '/all-careers', label: 'All Careers', icon: 'travel_explore' },
                   { path: '/assessments', label: 'Assessments', icon: 'quiz' },
                   { path: '/mentors', label: 'Mentors', icon: 'groups' },
+                  { path: '/profile', label: 'Profile', icon: 'person' },
                   { path: '/settings', label: 'Settings', icon: 'settings' }
                 ].map((item) => (
                   <button

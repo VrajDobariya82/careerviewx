@@ -53,13 +53,14 @@ export default function AssessmentsHub() {
   }, []);
 
   return (
-    <div className={`min-h-screen font-display flex flex-col transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+    <div className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
       <InternalNavbar />
 
-      <main className="flex-1 px-4 sm:px-6 lg:px-40 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar */}
-          <aside className="w-full lg:w-64 flex flex-col gap-6">
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col xl:flex-row gap-8">
+            {/* Quick Stats */}
+            <aside className="w-full xl:w-72 flex flex-col gap-6">
             <div className={`p-6 rounded-xl ${isDarkMode ? "glow-violet glass-panel" : "bg-white border border-border-light shadow-lg"}`}>
               <div className="flex flex-col mb-6">
                 <h1 className={`text-lg font-bold ${isDarkMode ? "text-white" : "text-charcoal"}`}>Quick Stats</h1>
@@ -237,7 +238,8 @@ export default function AssessmentsHub() {
           </div>
         </div>
       </main>
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

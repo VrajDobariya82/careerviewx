@@ -14,6 +14,10 @@ const CareerNewsCard = ({ news }) => {
                     src={news.urlToImage}
                     alt={news.title}
                     className="rounded-xl mb-4 h-40 w-full object-cover"
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80";
+                    }}
                 />
             )}
 

@@ -65,7 +65,7 @@ export const generateAllQuestions = () =>
 
 // Career API calls (protected)
 export const getCareerByName = (careerName) => 
-  API.get(`/careers/${careerName}`);
+  API.get(`/careers/${encodeURIComponent(careerName || '')}`);
 export const searchCareers = (query) =>
   API.get(`/careers/search?q=${encodeURIComponent(query)}`);
 export const getCareerById = (id) =>

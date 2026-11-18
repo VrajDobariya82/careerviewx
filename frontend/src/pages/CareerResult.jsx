@@ -105,42 +105,45 @@ const CareerResult = () => {
   if (!careers || !Array.isArray(careers) || careers.length === 0) {
     return (
       <div
-        className={`min-h-screen font-display transition-colors duration-300 ${
+        className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
           isDarkMode
             ? "bg-background-dark text-white"
             : "bg-surface-light text-charcoal"
         }`}
       >
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
-          <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center mx-auto mb-4">
-              <span className="material-symbols-outlined text-red-400 text-3xl">
-                error
-              </span>
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-red-400 text-3xl">
+                  error
+                </span>
+              </div>
+              <p
+                className={`text-lg font-bold mb-2 ${
+                  isDarkMode ? "text-white" : "text-charcoal"
+                }`}
+              >
+                No results found
+              </p>
+              <p
+                className={`text-sm mb-6 ${
+                  isDarkMode ? "text-white/50" : "text-slate-500"
+                }`}
+              >
+                Please complete the assessment first to see your career matches.
+              </p>
+              <button
+                onClick={() => navigate("/assessments/quest")}
+                className="px-8 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 cursor-pointer"
+              >
+                Take Assessment
+              </button>
             </div>
-            <p
-              className={`text-lg font-bold mb-2 ${
-                isDarkMode ? "text-white" : "text-charcoal"
-              }`}
-            >
-              No results found
-            </p>
-            <p
-              className={`text-sm mb-6 ${
-                isDarkMode ? "text-white/50" : "text-slate-500"
-              }`}
-            >
-              Please complete the assessment first to see your career matches.
-            </p>
-            <button
-              onClick={() => navigate("/assessments/quest")}
-              className="px-8 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
-            >
-              Take Assessment
-            </button>
-          </div>
-        </main>
+          </main>
+          <Footer />
+        </div>
       </div>
     );
   }
@@ -149,13 +152,15 @@ const CareerResult = () => {
 
   return (
     <div
-      className={`min-h-screen font-display transition-colors duration-300 ${
+      className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
         isDarkMode
           ? "bg-background-dark text-white"
           : "bg-surface-light text-charcoal"
       }`}
     >
       <InternalNavbar />
+
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
 
       {/* Toast Notification */}
       {toast.visible && (
@@ -616,7 +621,8 @@ const CareerResult = () => {
         </div>
       </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

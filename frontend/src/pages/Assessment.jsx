@@ -145,14 +145,15 @@ const Assessment = () => {
   if (phase === "start") {
     return (
       <div
-        className={`min-h-screen font-display transition-colors duration-300 ${
+        className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
           isDarkMode
             ? "bg-background-dark text-white"
             : "bg-surface-light text-charcoal"
         }`}
       >
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
           <div className="relative max-w-xl w-full">
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[120px] pointer-events-none"></div>
@@ -257,6 +258,7 @@ const Assessment = () => {
             </div>
           </div>
         </main>
+        </div>
       </div>
     );
   }
@@ -265,14 +267,15 @@ const Assessment = () => {
   if (phase === "generating") {
     return (
       <div
-        className={`min-h-screen font-display transition-colors duration-300 ${
+        className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
           isDarkMode
             ? "bg-background-dark text-white"
             : "bg-surface-light text-charcoal"
         }`}
       >
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
           <div className="relative max-w-xl w-full">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
 
@@ -315,6 +318,7 @@ const Assessment = () => {
             </div>
           </div>
         </main>
+        </div>
       </div>
     );
   }
@@ -323,14 +327,15 @@ const Assessment = () => {
   if (phase === "analyzing") {
     return (
       <div
-        className={`min-h-screen font-display transition-colors duration-300 ${
+        className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
           isDarkMode
             ? "bg-background-dark text-white"
             : "bg-surface-light text-charcoal"
         }`}
       >
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
           <div className="relative max-w-xl w-full">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
 
@@ -413,6 +418,7 @@ const Assessment = () => {
             </div>
           </div>
         </main>
+        </div>
       </div>
     );
   }
@@ -421,14 +427,15 @@ const Assessment = () => {
   if (phase === "error") {
     return (
       <div
-        className={`min-h-screen font-display transition-colors duration-300 ${
+        className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
           isDarkMode
             ? "bg-background-dark text-white"
             : "bg-surface-light text-charcoal"
         }`}
       >
         <InternalNavbar />
-        <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <main className="flex flex-1 justify-center items-center py-12 px-4 min-h-[calc(100vh-80px)]">
           <div className="relative max-w-xl w-full">
             <div
               className={`relative rounded-2xl p-10 flex flex-col items-center gap-6 shadow-2xl backdrop-blur-xl border ${
@@ -485,6 +492,7 @@ const Assessment = () => {
             </div>
           </div>
         </main>
+        </div>
       </div>
     );
   }
@@ -492,7 +500,7 @@ const Assessment = () => {
   // ==================== QUESTION SCREEN ====================
   return (
     <div
-      className={`min-h-screen font-display transition-colors duration-300 ${
+      className={`min-h-screen font-display flex flex-col lg:flex-row transition-colors duration-300 ${
         isDarkMode
           ? "bg-background-dark text-white"
           : "bg-surface-light text-charcoal"
@@ -500,7 +508,8 @@ const Assessment = () => {
     >
       <InternalNavbar />
 
-      <main className="flex flex-1 justify-center py-12 px-4 relative overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+        <main className="flex flex-1 justify-center py-12 px-4 relative overflow-hidden">
         {/* Background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -655,6 +664,7 @@ const Assessment = () => {
           </div>
         </div>
       </main>
+      </div>
     </div>
   );
 };

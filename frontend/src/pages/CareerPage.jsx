@@ -71,10 +71,12 @@ export default function CareerPage() {
   /* ========= LOADING STATE ========= */
   if (loading) {
     return (
-      <div className={`relative flex min-h-screen w-full flex-col overflow-x-hidden font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+      <div className={`relative flex flex-col lg:flex-row min-h-screen w-full font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
         {renderHeader()}
-        <CareerPageSkeleton />
-        {renderFooter()}
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <CareerPageSkeleton />
+          {renderFooter()}
+        </div>
       </div>
     );
   }
@@ -82,35 +84,38 @@ export default function CareerPage() {
   /* ========= ERROR STATE ========= */
   if (error) {
     return (
-      <div className={`relative flex min-h-screen w-full flex-col overflow-x-hidden font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+      <div className={`relative flex flex-col lg:flex-row min-h-screen w-full font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
         {renderHeader()}
-        <div className="flex items-center justify-center h-[60vh]">
-          <div className="flex flex-col items-center gap-4 max-w-md text-center">
-            <div className="size-16 rounded-full bg-red-500/10 flex items-center justify-center">
-              <span className="material-symbols-outlined text-red-400 text-3xl">
-                error
-              </span>
+        <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+          <div className="flex items-center justify-center h-[60vh]">
+            <div className="flex flex-col items-center gap-4 max-w-md text-center">
+              <div className="size-16 rounded-full bg-red-500/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-red-400 text-3xl">
+                  error
+                </span>
+              </div>
+              <h2 className={`text-xl font-bold ${isDarkMode ? "text-white" : "text-charcoal"}`}>{error}</h2>
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="px-6 py-3 bg-[#8b5cf6] text-white text-sm font-bold rounded-lg hover:brightness-110 transition-all shadow-lg shadow-[#8b5cf6]/40 cursor-pointer"
+              >
+                Back to Dashboard
+              </button>
             </div>
-            <h2 className={`text-xl font-bold ${isDarkMode ? "text-white" : "text-charcoal"}`}>{error}</h2>
-            <button
-              onClick={() => navigate("/dashboard")}
-              className="px-6 py-3 bg-[#8b5cf6] text-white text-sm font-bold rounded-lg hover:brightness-110 transition-all shadow-lg shadow-[#8b5cf6]/40"
-            >
-              Back to Dashboard
-            </button>
           </div>
+          {renderFooter()}
         </div>
-        {renderFooter()}
       </div>
     );
   }
 
   /* ========= MAIN PAGE ========= */
   return (
-    <div className={`relative flex min-h-screen w-full flex-col overflow-x-hidden font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
+    <div className={`relative flex flex-col lg:flex-row min-h-screen w-full font-display selection:bg-[#8b5cf6]/30 transition-colors duration-300 ${isDarkMode ? "bg-background-dark text-white" : "bg-surface-light text-charcoal"}`}>
       {renderHeader()}
 
-      <main className="flex flex-1 justify-center py-8">
+      <div className="flex-1 min-w-0 flex flex-col overflow-y-auto">
+        <main className="flex flex-1 justify-center py-8">
         <div className="layout-content-container flex flex-col w-full max-w-[1200px] px-4 md:px-10 gap-6">
           {/* ── Breadcrumb ── */}
           <nav className="flex flex-wrap gap-2 text-sm">
@@ -603,9 +608,10 @@ export default function CareerPage() {
             </div>
           </div>
         </div>
-      </main>
+        </main>
 
-      {renderFooter()}
+        {renderFooter()}
+      </div>
     </div>
   );
 }
