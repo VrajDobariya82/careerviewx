@@ -200,8 +200,8 @@ export default function AssessmentResult() {
   };
 
   const handleJobOpenings = () => {
-    // Navigate to job openings or careers page
-    navigate("/careers");
+    // Navigate to all careers exploration page
+    navigate("/all-careers");
   };
 
   const handleDownloadPDF = async () => {

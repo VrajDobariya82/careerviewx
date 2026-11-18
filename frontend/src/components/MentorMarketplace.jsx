@@ -1023,7 +1023,6 @@ export default function MentorMarketplace() {
                     margin: 0,
                     color: isDarkMode ? "#ffffff" : "#1e1b4b",
                     lineHeight: 1.15,
-                    lineHeight: 1.15,
                   }}
                 >
                   Find your ideal mentor

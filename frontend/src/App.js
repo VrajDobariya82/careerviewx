@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense, useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 import LoadingScreen from "./components/LoadingScreen";
@@ -47,6 +47,12 @@ function App() {
             <Route path="/career/:id" element={<ProtectedRoute><CareerPage /></ProtectedRoute>} />
             <Route path="/all-careers" element={<ProtectedRoute><AllCareers /></ProtectedRoute>} />
             <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+
+            {/* Navigation Aliases & Fallbacks */}
+            <Route path="/quiz" element={<Navigate to="/assessments" replace />} />
+            <Route path="/careers" element={<Navigate to="/all-careers" replace />} />
+            <Route path="/resources" element={<Navigate to="/career-paths" replace />} />
+            <Route path="/career-result" element={<Navigate to="/assessments/result" replace />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

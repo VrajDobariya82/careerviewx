@@ -7,16 +7,16 @@ const Footer = () => {
 
   const footerLinks = {
     platform: [
-      { label: "Career Quiz", href: "#" },
-      { label: "Mentor Directory", href: "#" },
-      { label: "Roadmap Library", href: "#" },
-      { label: "Job Board", href: "#" },
+      { label: "Career Assessment", href: "/assessments" },
+      { label: "Mentor Directory", href: "/mentors" },
+      { label: "Career Paths", href: "/career-paths" },
+      { label: "Explore All Careers", href: "/all-careers" },
     ],
     support: [
-      { label: "Help Center", href: "#" },
-      { label: "Success Stories", href: "#" },
-      { label: "Contact Us", href: "#" },
-      { label: "Privacy Policy", href: "#" },
+      { label: "Dashboard", href: "/dashboard" },
+      { label: "My Profile", href: "/profile" },
+      { label: "Settings", href: "/settings" },
+      { label: "Privacy Policy", href: "/settings" },
     ],
   };
 

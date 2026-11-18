@@ -131,10 +131,10 @@ const Settings = () => {
             <p className={`text-sm ${isDarkMode ? "text-slate-500" : "text-slate-600"}`}>Manage your professional identity</p>
           </div>
           <nav className="flex flex-col gap-2">
-            <a className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium shadow-lg shadow-primary/20 transition-all" href="#">
+            <button type="button" className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-medium shadow-lg shadow-primary/20 transition-all text-left w-full border-0">
               <span className="material-symbols-outlined">person</span>
               <span>General</span>
-            </a>
+            </button>
           </nav>
           <div className={`mt-auto p-4 rounded-xl border ${isDarkMode ? "bg-primary/20 border-primary/10" : "bg-primary/5 border-primary/20"}`}>
             <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Pro Member</p>
@@ -356,11 +356,11 @@ const Settings = () => {
 
       <footer className={`mt-auto py-6 px-12 ${isDarkMode ? "border-t border-primary/10" : "border-t border-border-light"}`}>
         <div className={`max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest ${isDarkMode ? "text-slate-500" : "text-slate-600"}`}>
-          <p>© 2024 Pathfinder Career Platform. All Rights Reserved.</p>
+          <p>© 2026 CareerviewX Career Platform. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <a className={`transition-colors ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`} href="#">Privacy Policy</a>
-            <a className={`transition-colors ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`} href="#">Terms of Service</a>
-            <a className={`transition-colors ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`} href="#">Help Center</a>
+            <span className={`transition-colors cursor-pointer ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`}>Privacy Policy</span>
+            <span className={`transition-colors cursor-pointer ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`}>Terms of Service</span>
+            <span className={`transition-colors cursor-pointer ${isDarkMode ? "hover:text-primary" : "hover:text-primary"}`}>Help Center</span>
           </div>
         </div>
       </footer>

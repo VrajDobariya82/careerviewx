@@ -199,8 +199,8 @@ export default function AssessmentsHub() {
                                 }
                               });
                             } else {
-                              // Old static assessment — no AI report available
-                              navigate("/career-result", {
+                              // Static or legacy assessment
+                              navigate("/assessments/result", {
                                 state: {
                                   recommendedCareer: item.recommendedCareer,
                                   scores: item.scores

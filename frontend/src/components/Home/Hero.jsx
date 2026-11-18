@@ -51,7 +51,7 @@ const Hero = () => {
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full sm:w-auto justify-center md:justify-start">
               <button
-                onClick={() => navigate("/quiz")}
+                onClick={() => navigate("/assessments")}
                 className={`flex w-full sm:w-auto min-w-[200px] cursor-pointer items-center justify-center rounded-2xl h-14 px-6 sm:px-8 text-white text-base sm:text-lg font-bold shadow-xl transition-all hover:scale-[1.02] ${isDarkMode
                     ? "bg-primary shadow-primary/30 hover:shadow-primary/40"
                     : "bg-primary shadow-primary/30 hover:shadow-primary/40"
@@ -60,6 +60,7 @@ const Hero = () => {
                 Take the Career Quiz
               </button>
               <button
+                onClick={() => navigate("/mentors")}
                 className={`flex w-full sm:w-auto min-w-[160px] cursor-pointer items-center justify-center rounded-2xl h-14 px-6 sm:px-8 border-2 text-base sm:text-lg font-bold transition-all ${isDarkMode
                     ? "border-white/10 text-white hover:bg-white/5"
                     : "border-charcoal/20 text-charcoal hover:bg-charcoal/5"

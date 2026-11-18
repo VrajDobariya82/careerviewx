@@ -82,6 +82,7 @@ export default function InternalNavbar() {
         {/* Desktop Right Controls */}
         <div className="hidden md:flex flex-1 justify-end gap-3 items-center">
           <button
+            aria-label="Notifications"
             className={`flex items-center justify-center rounded-lg h-10 w-10 transition-colors ${isDarkMode
               ? "glass-panel hover:bg-white/10"
               : "border border-border-light hover:bg-slate-100"
@@ -109,6 +110,8 @@ export default function InternalNavbar() {
             </span>
           </button>
           <button
+            onClick={() => navigate('/profile')}
+            aria-label="Profile"
             className={`flex items-center justify-center rounded-lg h-10 w-10 transition-colors ${isDarkMode
               ? "glass-panel hover:bg-white/10"
               : "border border-border-light hover:bg-slate-100"

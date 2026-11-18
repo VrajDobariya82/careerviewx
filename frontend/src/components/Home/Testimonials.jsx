@@ -9,7 +9,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote:
-        "PathFinder completely changed my trajectory. I was a business student but felt lost. Their quiz pointed me toward Product Design, and now I'm interning at a startup I love.",
+        "CareerviewX completely changed my trajectory. I was a business student but felt lost. Their quiz pointed me toward Product Design, and now I'm interning at a startup I love.",
       author: "Alex Rivera",
       role: "Junior Product Designer • Stanford University",
       rating: 5,

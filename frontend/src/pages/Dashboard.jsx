@@ -60,7 +60,7 @@ export default function CareerGuidanceDashboard() {
       iconColor: "#8b5cf6",
       iconBg: "rgba(139, 92, 246, 0.2)",
       title: "Mentor Sarah Williams sent a message",
-      description: '"Hi Alex, I\'ve reviewed your latest UX portfolio pieces..."',
+      description: `"Hi ${user?.firstName || 'there'}, I've reviewed your latest career assessment..."`,
       time: "2 mins ago",
       isNew: true
     },

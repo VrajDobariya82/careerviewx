@@ -25,7 +25,7 @@ const CTA = () => {
         </h2>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-12 max-w-[680px] font-medium">
           Join 50,000+ students who are already building their dream careers
-          with CareerPath.
+          with CareerviewX.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full justify-center">
           <Button
@@ -38,8 +38,9 @@ const CTA = () => {
           <Button
             variant="ghost"
             className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 rounded-xl sm:rounded-2xl text-base sm:text-xl font-black border-2 border-white text-white hover:bg-white/10 transition-all"
+            onClick={() => navigate('/mentors')}
           >
-            Book a Demo
+            Connect with Mentors
           </Button>
         </div>
       </div>

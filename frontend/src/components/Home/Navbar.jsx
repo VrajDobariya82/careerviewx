@@ -23,8 +23,8 @@ const Navbar = () => {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: "Careers", path: "/dashboard" },
-    { label: "Resources", path: "/resources" },
+    { label: "Career Paths", path: "/career-paths" },
+    { label: "All Careers", path: "/all-careers" },
     { label: "Assessments", path: "/assessments" },
     { label: "Mentors", path: "/mentors" },
   ];
