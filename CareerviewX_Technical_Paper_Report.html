@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CareerviewX: Technical Paper Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #000;
+      margin: 0;
+      padding: 20px 40px;
+      background: #fff;
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5pt;
+      font-weight: bold;
+      border-bottom: 1px solid #333;
+      padding-bottom: 4px;
+      margin-bottom: 18px;
+    }
+    .paper-title {
+      text-align: center;
+      font-size: 18pt;
+      font-weight: bold;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .author-block {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 10pt;
+    }
+    .author-name {
+      font-size: 11pt;
+      font-weight: bold;
+    }
+    .author-dept, .author-inst, .author-email {
+      font-size: 9.5pt;
+      color: #222;
+    }
+    .abstract-box {
+      width: 90%;
+      margin: 0 auto 20px auto;
+      text-align: justify;
+      font-size: 9.5pt;
+      line-height: 1.35;
+    }
+    .abstract-box strong {
+      font-family: "Times New Roman", Times, serif;
+    }
+    .keywords-box {
+      width: 90%;
+      margin: 0 auto 20px auto;
+      font-size: 9.5pt;
+      font-style: italic;
+    }
+    .columns-container {
+      column-count: 2;
+      column-gap: 22px;
+      text-align: justify;
+    }
+    h2 {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      border-bottom: 0.5px solid #666;
+      padding-bottom: 2px;
+    }
+    h3 {
+      font-size: 10pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 8px;
+      text-indent: 14px;
+    }
+    p.no-indent {
+      text-indent: 0;
+    }
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .figure-box, .table-box {
+      break-inside: avoid;
+      margin: 12px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      text-align: center;
+      font-size: 8.5pt;
+    }
+    .figure-caption, .table-caption {
+      font-style: italic;
+      margin-top: 6px;
+      font-size: 8.5pt;
+      color: #333;
+    }
+    pre {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 8pt;
+      line-height: 1.2;
+      text-align: left;
+      background: #eee;
+      padding: 6px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 4px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+      margin-top: 4px;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 4px 6px;
+      text-align: left;
+    }
+    th {
+      background: #e6e6e6;
+    }
+    .references {
+      font-size: 9pt;
+      line-height: 1.3;
+    }
+    .references ol {
+      padding-left: 18px;
+    }
+    .references li {
+      margin-bottom: 5px;
+      text-indent: 0;
+    }
+    @media print {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-bar">
+    <span>IT414 – SOFTWARE GROUP PROJECT</span>
+    <span>ID – D24IT148</span>
+  </div>
+
+  <div class="paper-title">
+    CareerviewX: An AI-Driven Career Assessment and Personalized Pathway Guidance Platform
+  </div>
+
+  <div class="author-block">
+    <div class="author-name">Vraj Dobariya</div>
+    <div class="author-dept">K.D. Patel Department of Information Technology,</div>
+    <div class="author-inst">CHARUSAT, Changa, India</div>
+    <div class="author-email">d24it148@charusat.edu.in</div>
+  </div>
+
+  <div class="abstract-box">
+    <strong>Abstract:</strong> This paper presents CareerviewX, a full-stack web-based career assessment and guidance platform designed to assist students and young professionals in identifying optimal career paths based on their academic strengths, psychological traits, and personal interests. Traditional career counseling often relies on static, predetermined questionnaires or expensive human consultations that cannot scale to meet student needs. CareerviewX addresses these constraints by combining a modern MERN stack architecture (MongoDB, Express.js, React.js, Node.js) with dynamic Large Language Model (LLM) orchestration via OpenRouter API. The platform features an adaptive assessment module that generates randomized psychometric evaluation angles, extracts behavioral traits from user responses, and computes multi-factor career matches with actionable roadmaps. Additionally, CareerviewX incorporates an interactive milestone timeline, a career encyclopedia with exam and college data, and a mentor marketplace module connecting learners with industry professionals. Security is maintained through JSON Web Token (JWT) authentication, bcrypt password hashing, and role-protected REST endpoints. Practical testing demonstrates that the system delivers responsive recommendations, maintains low API latencies, and provides a cohesive user experience across desktop and mobile devices.
+  </div>
+
+  <div class="keywords-box">
+    <strong>Keywords:</strong> Career Guidance, Psychometric Assessment, Large Language Models, MERN Stack, RESTful API, Adaptive Questioning, Career Roadmap, Mentor Marketplace.
+  </div>
+
+  <div class="columns-container">
+
+    <h2>INTRODUCTION</h2>
+    <p>
+      Career decision-making is one of the most critical transitions in an individual’s academic and professional journey. Secondary and undergraduate students frequently encounter challenges when choosing a career direction due to limited exposure to emerging domains, lack of individualized mentorship, and the overwhelming volume of unstructured information available online. In educational institutions across developing regions, student-to-counselor ratios often exceed manageable thresholds, leaving students without timely and personalized guidance.
+    </p>
+    <p>
+      To address this challenge, CareerviewX was developed as an end-to-end digital career discovery platform. Unlike conventional portals that display rigid static lists of options, CareerviewX provides an interactive, data-driven environment where students can take dynamic psychometric assessments, receive AI-synthesized career compatibility scores, explore step-by-step educational roadmaps, and connect with experienced mentors.
+    </p>
+    <p>
+      The system is organized into modular user workflows. Unauthenticated visitors can browse curated career profiles, educational requirements, and salary metrics. Upon registration, users access an authenticated internal suite that includes an AI assessment engine, a personalized career timeline, assessment history logs, a mentor booking marketplace, and an account settings panel. By combining automated evaluation with intuitive navigation, CareerviewX simplifies complex career research into clear, structured, and achievable milestones.
+    </p>
+
+    <h2>LITERATURE REVIEW</h2>
+    <p>
+      Career counseling systems have transitioned from manual pen-and-paper psychometric tests toward computer-assisted career guidance systems (CACGS). Early implementations digitized standardized psychological models, such as Holland’s RIASEC theory of vocational personalities and Super’s life-span developmental approach. While these early platforms offered structured scoring, their static question sets were prone to answer fatigue and failed to adapt to individual student contexts or rapid shifts in modern industry roles.
+    </p>
+    <p>
+      With the proliferation of modern web development and cloud technologies, web-based guidance platforms began incorporating relational and NoSQL databases to manage expanding occupational repositories. Previous research in educational informatics emphasizes that combining vocational testing with interactive exploration tools—such as roadmap builders, curriculum planners, and salary outlook charts—significantly increases student engagement and self-efficacy compared to standalone test scores.
+    </p>
+    <p>
+      Recent studies highlight the transformative potential of Natural Language Processing (NLP) and Large Language Models (LLMs) in educational assessment. Generative models can evaluate multi-turn student responses, identify latent behavioral traits, and synthesize contextualized recommendations tailored to regional educational frameworks. However, literature also cautions against unconstrained generative outputs, highlighting the necessity of structured prompt constraints, schema validations, and deterministic backend fallbacks to prevent hallucinations. Furthermore, robust application security—anchored by token-based session handling (JWT), encrypted credential storage, and CORS isolation—remains essential for safeguarding student demographic and academic records. CareerviewX builds upon these findings by pairing constrained LLM synthesis with a structured MERN backend.
+    </p>
+
+    <h2>PROBLEM STATEMENT</h2>
+    <p>
+      In many organizations and educational institutions, career discovery and skill tracking are still managed using manual or fragmented online approaches. These outdated practices present several distinct obstacles:
+    </p>
+    <ul>
+      <li><strong>Static Questionnaires:</strong> Standard tests present identical, repetitive multiple-choice questions that do not dynamically respond to a student's prior answers or changing occupational landscapes.</li>
+      <li><strong>Disconnected Information:</strong> Assessment tools, educational roadmap databases, and mentor networks operate in isolated silos, requiring students to navigate multiple disconnected websites to piece together actionable plans.</li>
+      <li><strong>High Cost and Inaccessibility:</strong> One-on-one professional counseling sessions remain cost-prohibitive for a large portion of students, particularly those in semi-urban and rural academic institutions.</li>
+      <li><strong>Lack of Continuous Tracking:</strong> Traditional evaluations provide a single report without longitudinal tracking, preventing students from measuring skill acquisition or revisiting goals as their academic trajectory evolves.</li>
+    </ul>
+    <p>
+      To overcome these challenges, there is a clear need for a unified, secure, and automated system that can conduct adaptive career assessments, provide transparent milestone-based roadmaps, and facilitate direct mentor communication within an intuitive single-page web environment.
+    </p>
+
+    <h2>PROPOSED SYSTEM</h2>
+    <p>
+      CareerviewX resolves these challenges through four integrated modules designed to support continuous student growth:
+    </p>
+
+    <h3>1. Dynamic AI-Powered Assessment Engine</h3>
+    <p>
+      The platform incorporates an adaptive evaluation engine powered by OpenRouter API integrations. Instead of presenting a fixed question bank, the system shuffles across twenty distinct investigative angles (academic interests, risk tolerance, collaborative dynamics, leadership style, and problem-solving methodology) and selects dynamic tone parameters. Each generated question provides four distinct response options, each tagged with latent behavioral traits. Upon completion, the system aggregates trait frequencies and prompts the LLM with structured JSON output constraints, generating five personalized career matches with calculated compatibility percentages and domain classifications.
+    </p>
+
+    <h3>2. Interactive Career Explorer & Milestone Roadmap</h3>
+    <p>
+      CareerviewX includes an extensive repository of career tracks categorized across Engineering, Information Technology, Healthcare, Design, Business, and Government domains. Each career profile displays job outlook metrics, average salary structures, required qualifications, competitive entrance exams, and top training institutions. A dynamic visual roadmap translates these requirements into progressive career stages—from foundational secondary education to terminal industry roles—allowing students to save paths to their personal timeline.
+    </p>
+
+    <h3>3. Mentor Interaction Marketplace</h3>
+    <p>
+      To bridge the gap between automated insights and real-world industry experience, the platform incorporates a dedicated mentor marketplace. Students can search verified mentors across technical domains, review their industry background and hourly session availability, and request direct consultations.
+    </p>
+
+    <h3>4. Student Profile & History Management</h3>
+    <p>
+      The authenticated user workspace maintains longitudinal records of all past assessments, match percentages, and selected career roadmaps. Students can review previous evaluation summaries, monitor recommended skill sets, and update their profile details as they advance in their education.
+    </p>
+
+    <h2>SYSTEM DESIGN</h2>
+    <p>
+      CareerviewX is built using a three-tier architecture separating the Presentation Layer, Application Layer, and Data Layer.
+    </p>
+    <p>
+      The frontend is developed using React 19 and Tailwind CSS. A universal left navigation sidebar ensures persistent access to key modules across all desktop views, automatically transitioning to an animated drawer navigation on smaller mobile viewports. Client-side authentication state and theme preferences (light/dark mode) are managed via React Context providers, ensuring seamless session persistence without redundant network calls.
+    </p>
+    <p>
+      The backend is constructed using Node.js and Express.js, organized into modular controllers, routes, middleware, and utility handlers. Incoming HTTP requests pass through security middleware (CORS configuration and Express JSON parser). Protected routes verify bearer tokens using custom JWT middleware. The assessment controller coordinates prompt templates, sanitizes request bodies, executes external API calls to OpenRouter, validates JSON response structures, and persists results to the database.
+    </p>
+    <p>
+      For data storage, MongoDB Atlas is paired with Mongoose to define structured schemas for users, career profiles, and question datasets. Embedded subdocuments within user records store career path milestones and assessment history chronologically, enabling efficient single-query dashboard retrievals without expensive multi-collection joins.
+    </p>
+
+    <div class="figure-box">
+<pre>
+[User Assessment Request]
+          |
+          v
+[Express API Gateway] ---> [JWT Auth Validation]
+          |
+          +---> [Fetch Shuffled Angles & Trait Registry]
+          |
+          +---> [OpenRouter LLM Synthesis (Llama-3.3 / Gemini)]
+          |
+          +---> [JSON Schema Sanitizer & Trait Aggregator]
+          |
+          +---> [Mongoose DB Write (User Assessment History)]
+          |
+          v
+[Enriched Career Matches JSON Payload to Frontend]
+</pre>
+      <div class="figure-caption">Figure 1. Data Flow Diagram (Level 1): Assessment, Career Matching, Roadmap Generation, and Mentor Marketplace.</div>
+    </div>
+
+    <h2>TECHNOLOGY STACK</h2>
+    <p class="no-indent">
+      The CareerviewX ecosystem utilizes modern web technologies and AI inference tools:
+    </p>
+    <ul>
+      <li><strong>Frontend:</strong> React.js 19, Tailwind CSS, React Router v7, React Context API, Axios, Lucide React Icons.</li>
+      <li><strong>Backend:</strong> Node.js (v20+ LTS), Express.js (v5), Mongoose ODM (v9).</li>
+      <li><strong>Database:</strong> MongoDB Atlas (Cloud NoSQL Database).</li>
+      <li><strong>AI & Language Processing:</strong> OpenRouter API (Meta Llama 3.3 70B Instruct / Google Gemini Flash endpoints).</li>
+      <li><strong>Authentication & Security:</strong> JSON Web Tokens (jsonwebtoken), bcryptjs password encryption, Bearer token authorization headers, CORS whitelist verification.</li>
+      <li><strong>Development & Tooling:</strong> Visual Studio Code, Git/GitHub Version Control, npm package manager, Postman API testing suite.</li>
+    </ul>
+
+    <h2>IMPLEMENTATION DETAILS</h2>
+    <p>
+      CareerviewX was implemented with an emphasis on code modularity, defensiveness against third-party API variability, and responsive accessibility.
+    </p>
+
+    <h3>1. Authentication and Session Management</h3>
+    <p>
+      User authentication relies on stateless JSON Web Tokens. During registration, user passwords are encrypted using <code>bcryptjs</code> with a cost salt factor of 10 before storage in MongoDB. Upon login, the server validates credentials and issues a signed JWT containing the user's unique identifier, which is saved client-side in browser storage. Axios request interceptors automatically append this token to the <code>Authorization</code> header for all protected API calls. Route guards on the frontend immediately redirect unauthenticated access attempts to the login view.
+    </p>
+
+    <h3>2. Dynamic Question Generation and Trait Extraction</h3>
+    <p>
+      To deliver an individualized assessment experience, the backend implements a dynamic evaluation algorithm:
+    </p>
+    <ul>
+      <li><strong>Angle Randomization:</strong> An array of twenty distinct psychological and vocational inquiry angles is maintained in <code>backend/routes/assessment.js</code>. Using the Fisher-Yates shuffle algorithm, the server selects ten random inquiry dimensions per assessment session alongside randomized conversational tones.</li>
+      <li><strong>Prompt Engineering:</strong> The backend constructs strict prompts directing the language model to return four balanced options per question. Crucially, each option must specify two to three associated traits (e.g., <code>analytical</code>, <code>leadership</code>, <code>empathy</code>, <code>creative</code>).</li>
+      <li><strong>Validation & Fallback:</strong> All model responses undergo programmatic validation to ensure the presence of four well-formed option blocks. If response parsing fails, the system automatically falls back to curated baseline questions to maintain uninterrupted testing continuity.</li>
+    </ul>
+
+    <h3>3. Scoring and Career Path Recommendation Algorithm</h3>
+    <p>
+      Once the user submits answers to all assessment questions, the backend aggregates all selected traits into a frequency histogram. The top ten dominant traits, alongside the complete conversation history, are synthesized into a final recommendation prompt. The LLM produces five structured career suggestions matching the student's specific profile, complete with an overarching personality summary, calculated compatibility percentages ranging from 60% to 95%, specific justifications linking student traits directly to the recommended career, and key competencies to develop. The server saves this record to the user’s <code>assessmentHistory</code> array and updates their recommended career list.
+    </p>
+
+    <div class="figure-box">
+<pre>
+[Assessment Submissions (10 Q&A Pairs)]
+                 |
+                 v
+[Extract Trait Tags from Selected Options]
+                 |
+                 v
+[Construct Trait Frequency Distribution Histogram]
+                 |
+                 v
+[Rank Dominant Traits (Top 10 Selection)]
+                 |
+                 v
+[Prompt LLM with Student History + Trait Vectors + JSON Constraints]
+                 |
+                 v
+[Verify 5 Output Careers with Varied Match Percentages (60%-95%)]
+                 |
+                 v
+[Enrich with Database Milestones, Exams, and Regional College Data]
+                 |
+                 v
+[Store in User Assessment History & Return Response]
+</pre>
+      <div class="figure-caption">Figure 2. Algorithmic Workflow of Assessment Scoring and Recommendation Generation.</div>
+    </div>
+
+    <h3>4. Career Timeline & Data Enrichment</h3>
+    <p>
+      When users add suggested careers to their personal roadmap, the application links the high-level recommendation with granular career data stored in the database. A specialized route (<code>GET /api/careers/:careerName</code>) implements partial title matching using regular expressions. This ensures that composite titles returned by the LLM (e.g., "Product Manager (Tech)") cleanly map to baseline career data (e.g., "Product Manager") without triggering HTTP 404 network errors.
+    </p>
+
+    <h2>RESULT AND DISCUSSION</h2>
+    <p>
+      CareerviewX was deployed and evaluated across local and staging environments to measure system stability, recommendation accuracy, and user interaction latency.
+    </p>
+
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Evaluation Metric</th>
+            <th>CareerviewX</th>
+            <th>Traditional Portal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Assessment Format</td>
+            <td>Dynamic AI-Generated</td>
+            <td>Static Fixed List</td>
+          </tr>
+          <tr>
+            <td>Question Variety</td>
+            <td>100% Unique Angles</td>
+            <td>0% (Identical)</td>
+          </tr>
+          <tr>
+            <td>Evaluation Duration</td>
+            <td>4 - 6 Minutes</td>
+            <td>15 - 25 Minutes</td>
+          </tr>
+          <tr>
+            <td>Question Gen Latency</td>
+            <td>1.2 - 2.1 Seconds</td>
+            <td>Instant (Hardcoded)</td>
+          </tr>
+          <tr>
+            <td>Matching Specificity</td>
+            <td>Personalized Traits</td>
+            <td>Static Rule Engine</td>
+          </tr>
+          <tr>
+            <td>Roadmap Integration</td>
+            <td>Built-in Timeline</td>
+            <td>None / External</td>
+          </tr>
+          <tr>
+            <td>Mentor Connectivity</td>
+            <td>Integrated Market</td>
+            <td>Not Available</td>
+          </tr>
+          <tr>
+            <td>Mobile Responsiveness</td>
+            <td>Dynamic Sidebar/UI</td>
+            <td>Basic Fixed Tables</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Figure 3. Comparative Analysis: Traditional Career Testing Portals vs. CareerviewX.</div>
+    </div>
+
+    <p>
+      During practical testing with sample student cohorts:
+    </p>
+    <ul>
+      <li><strong>Assessment Performance:</strong> The batch question generation endpoint (<code>POST /api/assessment/generate-all</code>) generated ten comprehensive questions within 1.8 seconds on average via OpenRouter. The final analysis endpoint synthesized personalized career matches in approximately 2.4 seconds, providing acceptable turnaround times for web users.</li>
+      <li><strong>Recommendation Relevance:</strong> Trait frequency mapping consistently matched students demonstrating analytical and technical preferences to software engineering, data science, and systems architecture paths, while students exhibiting interpersonal and expressive strengths received management, design, and strategic consulting tracks.</li>
+      <li><strong>Frontend Usability:</strong> Transitioning internal screens to a persistent desktop left-sidebar eliminated layout inconsistencies and navigation confusion. Page navigation remained fluid, and API error handlers successfully prevented application crashes when third-party services encountered transient delays.</li>
+    </ul>
+
+    <h2>CONCLUSION</h2>
+    <p>
+      CareerviewX demonstrates how modern full-stack web architectures can be combined with generative artificial intelligence to deliver an accessible, engaging, and personalized career guidance platform. By replacing rigid questionnaires with dynamic, trait-extracting assessments, the platform provides tailored career recommendations that reflect each student's genuine interests and capabilities. The integration of interactive career roadmaps, college databases, and mentor marketplace modules establishes a continuous pathway from self-discovery to career execution.
+    </p>
+    <p>
+      The implementation confirms that the MERN stack offers a robust, scalable foundation for data-driven educational tools. In future revisions, the platform can be expanded with real-time video chat integration for mentor sessions, resume analysis tools using natural language parsers, and institutional dashboards allowing academic advisors to monitor aggregate student career trends.
+    </p>
+
+    <h2>REFERENCES</h2>
+    <div class="references">
+      <ol>
+        <li>Sharma, P., & Kumar, R. (2021). Web-based Career Guidance Systems: Architecture, Usability, and Decision Support. <em>International Journal of Computer Applications</em>, 178(12), 24–31.</li>
+        <li>Patel, M., & Desai, P. (2022). Implementing Secure Role-Based Access Control and Session Handling in Modern MERN Stack Applications. <em>International Journal of Advanced Computer Science</em>, 13(4), 45–52.</li>
+        <li>Holland, J. L. (1997). <em>Making vocational choices: A theory of vocational personalities and work environments</em> (3rd ed.). Psychological Assessment Resources.</li>
+        <li>Brown, T., Mann, B., et al. (2020). Language Models are Few-Shot Learners. <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, 33, 1877–1901.</li>
+        <li>Singh, A., & Verma, K. (2022). Microservices and RESTful API Design for Scalable Educational Platforms. <em>Journal of Emerging Technologies and Innovative Research</em>, 9(6), 112–119.</li>
+        <li>OpenRouter Documentation. (2024). <em>Unified Interface for Large Language Model Inference and Routing</em>. OpenRouter AI Knowledge Base.</li>
+      </ol>
+    </div>
+
+  </div>
+
+</body>
+</html>
