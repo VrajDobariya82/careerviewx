@@ -1,4 +1,8 @@
+const dns = require("dns");
 const mongoose = require("mongoose");
+
+// Use public DNS resolvers so mongodb+srv:// SRV lookups succeed on networks that block them
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 const connectDB = async () => {
   try {

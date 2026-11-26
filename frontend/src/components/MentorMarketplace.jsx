@@ -175,8 +175,6 @@ const MENTOR_DATA = [
 ];
 
 const CATEGORIES = ["ALL TECH", "Product Design", "Engineering", "Management"];
-const INDUSTRIES = ["Technology", "Finance", "Design", "Marketing", "Healthcare"];
-const EXPERIENCES = ["Entry (1-3 yrs)", "Mid (4-7 yrs)", "Senior (8+ yrs)"];
 const PER_PAGE = 6;
 
 /* ─────────────────────────────────────────────────────────────
@@ -827,37 +825,21 @@ export default function MentorMarketplace() {
 
   const [initialLoading, setInitialLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("ALL TECH");
-  const [selectedIndustries, setSelectedIndustries] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState("");
   const [sortMode, setSortMode] = useState("Trending");
   const [modalMentor, setModalMentor] = useState(null);
   const [page, setPage] = useState(1);
-
-  const toggleIndustry = (ind) =>
-    setSelectedIndustries((prev) =>
-      prev.includes(ind) ? prev.filter((i) => i !== ind) : [...prev, ind]
-    );
 
   const filtered = useMemo(() => {
     let list = [...MENTOR_DATA];
     if (activeCategory !== "ALL TECH")
       list = list.filter((m) => m.category === activeCategory);
-    if (selectedExperience)
-      list = list.filter((m) => m.experience === selectedExperience);
     if (sortMode === "Trending") list.sort((a, b) => b.reviews - a.reviews);
     else list.sort((a, b) => b.id - a.id);
     return list;
-  }, [activeCategory, selectedExperience, sortMode]);
+  }, [activeCategory, sortMode]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const paged = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-
-  const handleClearFilters = () => {
-    setSelectedIndustries([]);
-    setSelectedExperience("");
-    setActiveCategory("ALL TECH");
-    setPage(1);
-  };
 
   // Brief skeleton on first mount for a polished feel
   useEffect(() => {
@@ -905,103 +887,8 @@ export default function MentorMarketplace() {
         }}
       >
         <div
-          className="max-w-[1380px] mx-auto px-5 py-8 flex flex-col lg:flex-row gap-7 items-start"
+          className="max-w-[1380px] mx-auto px-5 py-8 flex flex-col gap-7"
         >
-          {/* ════════════════════════
-              SIDEBAR FILTERS
-          ════════════════════════ */}
-          <aside
-            className="w-full lg:w-[248px] shrink-0 lg:sticky lg:top-[88px] rounded-[18px] p-[22px_18px] flex flex-col gap-6"
-            style={{
-              background: C.card,
-              border: `1px solid ${C.border}`,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <h2 style={{ margin: 0, fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: 17 }}>
-                Filters
-              </h2>
-              <button
-                onClick={handleClearFilters}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: C.primaryLight,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                }}
-              >
-                Clear All
-              </button>
-            </div>
-
-            {/* Industry */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.primary} strokeWidth="2">
-                  <rect x="2" y="7" width="20" height="14" rx="2" />
-                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                </svg>
-                <span style={{ fontWeight: 700, fontSize: 13 }}>Industry</span>
-              </div>
-              {INDUSTRIES.map((ind) => (
-                <Checkbox
-                  key={ind}
-                  label={ind}
-                  checked={selectedIndustries.includes(ind)}
-                  onChange={() => { toggleIndustry(ind); setPage(1); }}
-                />
-              ))}
-            </div>
-
-            {/* Experience */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.primary} strokeWidth="2">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                  <polyline points="17 6 23 6 23 12" />
-                </svg>
-                <span style={{ fontWeight: 700, fontSize: 13 }}>Experience</span>
-              </div>
-              <Radio
-                label="Any"
-                checked={selectedExperience === ""}
-                onChange={() => { setSelectedExperience(""); setPage(1); }}
-              />
-              {EXPERIENCES.map((exp) => (
-                <Radio
-                  key={exp}
-                  label={exp}
-                  checked={selectedExperience === exp}
-                  onChange={() => { setSelectedExperience(exp); setPage(1); }}
-                />
-              ))}
-            </div>
-
-            {/* Apply button */}
-            <button
-              style={{
-                background: `linear-gradient(135deg, ${C.primary}, #5b21b6)`,
-                border: "none",
-                borderRadius: 12,
-                color: C.white,
-                fontWeight: 700,
-                fontSize: 14,
-                padding: "13px",
-                cursor: "pointer",
-                boxShadow: "0 4px 20px rgba(124,58,237,0.4)",
-                transition: "opacity 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              Apply Filters
-            </button>
-          </aside>
-
           {/* ════════════════════════
               MAIN CONTENT
           ════════════════════════ */}

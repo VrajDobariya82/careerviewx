@@ -273,6 +273,48 @@ export default function CareerGuidanceDashboard() {
               </button>
 
               <button
+                onClick={() => navigate('/profile')}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-all ${isActive('/profile')
+                  ? isDarkMode
+                    ? 'bg-white/5 text-white'
+                    : 'bg-slate-100 text-charcoal'
+                  : isDarkMode
+                    ? 'text-[#a094b8] hover:text-white hover:bg-white/5'
+                    : 'text-gray-600 hover:text-charcoal hover:bg-slate-100'}`}
+              >
+                <span className="material-symbols-outlined">person</span>
+                <p className="text-sm font-medium">Profile</p>
+              </button>
+
+              <button
+                onClick={() => navigate('/settings')}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-all ${isActive('/settings')
+                  ? isDarkMode
+                    ? 'bg-white/5 text-white'
+                    : 'bg-slate-100 text-charcoal'
+                  : isDarkMode
+                    ? 'text-[#a094b8] hover:text-white hover:bg-white/5'
+                    : 'text-gray-600 hover:text-charcoal hover:bg-slate-100'}`}
+              >
+                <span className="material-symbols-outlined">settings</span>
+                <p className="text-sm font-medium">Settings</p>
+              </button>
+
+              <button
+                onClick={toggleTheme}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-all ${isDarkMode
+                  ? 'text-[#a094b8] hover:text-white hover:bg-white/5'
+                  : 'text-gray-600 hover:text-charcoal hover:bg-slate-100'}`}
+              >
+                <span className="material-symbols-outlined">
+                  {isDarkMode ? "light_mode" : "dark_mode"}
+                </span>
+                <p className="text-sm font-medium">
+                  {isDarkMode ? "Light Mode" : "Dark Mode"}
+                </p>
+              </button>
+
+              <button
                 onClick={handleLogout}
                 className="flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-all text-red-400 hover:text-red-300 hover:bg-red-500/10"
               >
@@ -672,6 +714,20 @@ export default function CareerGuidanceDashboard() {
                     <p className="text-sm font-medium">{item.label}</p>
                   </button>
                 ))}
+
+                <button
+                  onClick={toggleTheme}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${isDarkMode
+                    ? 'text-[#a094b8] hover:text-white hover:bg-white/5'
+                    : 'text-gray-600 hover:text-primary hover:bg-slate-100'}`}
+                >
+                  <span className="material-symbols-outlined text-xl">
+                    {isDarkMode ? "light_mode" : "dark_mode"}
+                  </span>
+                  <p className="text-sm font-medium">
+                    {isDarkMode ? "Light Mode" : "Dark Mode"}
+                  </p>
+                </button>
               </nav>
 
               <button
